@@ -1,0 +1,10 @@
+Iteration Two
+* create a screen manager to manage what screen to display such as:
+    * main menu screen
+    * level selection screen
+    * game screen
+    * game over screen
+* create a game mode class to manage the win / lose condition
+* create a main menu screen
+* create button class
+* create text class

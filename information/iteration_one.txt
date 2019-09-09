@@ -1,0 +1,8 @@
+Iteration One
+* Get game loop to run
+* Create a setting class to store the default values of the program
+* Add an enemy
+* Add a ball
+* Add a player
+* Add controls for player to move.
+* Refactor enemy, ball, player, and controller
