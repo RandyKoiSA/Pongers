@@ -1,32 +1,12 @@
 import pygame
 from custom.vector_point import Vector
+from players.player_base import Player_Base
 
-
-class Player:
+class Player(Player_Base):
     """ Player sprite that holds all the attribute and details of what the player has """
-    def __init__(self, screen, controller, settings, width=100, height=5, color=(0, 0, 0), velocity=Vector(20,5)):
+    def __init__(self, screen, controller, settings, player_type, width=100, height=5, color=(0, 0, 0), velocity=Vector(20,5)):
         """ Initialise default values """
-
-        # Player's bar width : EDITABLE
-        self.player_width = 100
-
-        # Player's bar height : EDITABLE
-        self.player_height = 5
-
-        # Color of player : EDITABLE
-        self.color = (0, 0, 0)
-
-        # The speed of the player : EDITABLE
-        self.velocity = Vector(20, 5)
-
-        # Settings, to get the screens height and width
-        self.settings = settings
-
-        # Screen, to draw onto the screen and reduce the parameters when using updating and display function
-        self.screen = screen
-
-        # Controller, to access and respond to any controller inputs
-        self.controller = controller
+        super().__init__(screen, controller, settings, player_type, width, height, color, velocity)
 
         # Create the rectangle and position the player
         self.rect = pygame.Rect(((self.settings.WINDOW_WIDTH / 2) - (self.player_width / 2),

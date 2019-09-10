@@ -50,17 +50,19 @@ class LevelSelectScreen:
         filename = 'levels_file.json'
         with open(filename, 'r') as read_file:
             data = json.load(read_file)
-            print(type(data))
+            print(data)
             for x in data:
                 print(str(data[x]['levelName']))
+                print(str(data[x]['playerGroup']))
+                print(str(data[x]['enemyGroup']))
+                print(str(data[x]['ballGroup']))
                 self.levels.append(Level_Button(self.screen, self.screen, data[x]['levelName'],
                                                 data[x]["playerGroup"], data[x]["enemyGroup"], data[x]["ballGroup"]))
 
     def arrange_level(self):
-        print('arranging levels')
         counter = 0
         column = 0
-        print(len(self.levels))
+        print(str(len(self.levels)) + ' level(s)')
         for level in self.levels:
             level.rect.x = counter * 120 + 10
             level.rect.y = column * 150 + 150
@@ -76,3 +78,4 @@ class LevelSelectScreen:
                 self.gamemode.game_active = True
                 self.screenmanager.bLevelSelect_Screen = False
                 self.screenmanager.game_screen.create_sprites(level.playerGroup, level.enemyGroup, level.ballGroup)
+

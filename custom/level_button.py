@@ -12,3 +12,7 @@ class Level_Button(Button):
         self.playerGroup = playergroup
         self.enemyGroup = enemygroup
         self.ballGroup = ballgroup
+
+    def gather_information(self):
+        for player in self.playerGroup:
+            print(player)

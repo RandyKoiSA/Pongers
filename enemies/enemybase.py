@@ -4,19 +4,19 @@ from custom.vector_point import Vector
 
 class EnemyBase:
     """ Base for enemy ai """
-    def __init__(self, screen, settings):
+    def __init__(self, screen, settings, enemy_type, width, height, color, velocity):
         """ Initialize the default values of the enemy """
         # Enemy's height size
-        self.enemy_height = 5
+        self.enemy_height = height
 
         # Enemy's width size
-        self.enemy_width = 100
+        self.enemy_width = width
 
         # Enemy's color box
-        self.color = (255, 0, 0)
+        self.color = color
 
         # Enemy's speed when moving left and right
-        self.velocity = Vector(20, 0)
+        self.velocity = Vector(velocity[0], velocity[1])
 
         # Screen, to draw onto
         self.screen = screen
@@ -24,14 +24,7 @@ class EnemyBase:
         # Settings, to access the size of the window to figure out boundaries
         self.settings = settings
 
-        # Creating a rectangle for the enemy
-        self.rect = pygame.Rect(((self.settings.WINDOW_WIDTH/2) - (self.enemy_width / 2), 20),
-                                (self.enemy_width, self.enemy_height))
+        # Enemy Type, to determine what type of enemy it is
+        self.enemy_type = enemy_type
 
-        self.movingright = False
 
-    def update(self):
-        print('This is a base update in enemybase.py')
-
-    def draw(self):
-        pygame.draw.rect(self.screen, self.color, self.rect, 5)

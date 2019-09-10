@@ -1,9 +1,9 @@
-from player import Player
+from players.player import Player
 from enemies.easyenemy import EasyEnemy
-from ballbase import BallBase
+from balls.ball_type_one import Ball_Type_One
+from balls.ball_type_zero import Ball_Type_Zero
 from core import gamefunctions as gf
-from pygame.sprite import Group
-
+from players.side_player import SidePlayer
 
 class GameScreen:
     """ Game screen that display the actually game play of pong"""
@@ -35,19 +35,25 @@ class GameScreen:
 
     def update(self):
         """ Update all the sprites in the game screen """
+        # Update all the player sprites
         for player in self.players:
             player.update()
+        # Update all enemy sprites
         for enemy in self.enemies:
             enemy.update()
+        # Update all ball sprites
         for ball in self.balls:
             ball.update()
 
     def draw(self):
         """ Draw all the sprites in the game screen """
+        # Draw all player sprites in player group
         for player in self.players:
             player.draw()
+        # Draw all enemy sprites in enemy group
         for enemy in self.enemies:
             enemy.draw()
+        # Draw all ball sprites in ball group
         for ball in self.balls:
             ball.draw()
 
@@ -56,13 +62,30 @@ class GameScreen:
         self.ball = BallBase(self.screen, self.settings, self.gamemode, self.players, self.enemies)
 
     def create_sprites(self, players, enemies, balls):
+        """ Loads in all the player, enemies, and balls into the game."""
+        # Add all the new players into the game's players group
         for player in players:
-            new_player = Player(self.screen, self.controller, self.settings,
-                                player[0], player[1], player[2], player[3])
-            self.players.append(new_player)
+            print(player['width'])
+            if player['player_type'] == 0:
+                new_player = Player(self.screen, self.controller, self.settings, player['player_type'])
+                self.players.append(new_player)
+            elif player['player_type'] == 1:
+                new_player = SidePlayer(self.screen, self.controller, self.settings, player['bRightSide'], player['player_type'])
+                self.players.append(new_player)
+
+        # Add all new enemies into the game's enemy group
         for enemy in enemies:
-            new_enemy = EasyEnemy(self.screen, self.settings)
+            new_enemy = EasyEnemy(self.screen, self.settings, enemy['enemy_type'], enemy['width'],
+                                  enemy['height'], enemy['color'], enemy['velocity'])
             self.enemies.append(new_enemy)
+
+        # Add all new balls into the game's ball group
         for ball in balls:
-            new_ball = BallBase(self.screen, self.settings, self.gamemode, self.players, self.enemies)
-            self.balls.append(new_ball)
+            if ball['ball_type'] == 0:
+                new_ball = Ball_Type_Zero(self.screen, self.settings, self.gamemode, ball['ball_type'], ball['color'], ball['velocity'],
+                                          self.players, self.enemies, ball['isRandom'], ball['degree'])
+                self.balls.append(new_ball)
+            if ball['ball_type'] == 1:
+                new_ball = Ball_Type_One(self.screen, self.settings, self.gamemode, ball['ball_type'], ball['color'], ball['velocity'],
+                                    self.players, self.enemies, ball['isRandom'], ball['degree'])
+                self.balls.append(new_ball)
