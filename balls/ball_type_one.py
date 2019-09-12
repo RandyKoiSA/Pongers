@@ -37,12 +37,14 @@ class BallTypeOne(BallBase):
         # Checks if the ball passed the top or bottom screen
         if self.rect.bottom < 0 or self.rect.top > self.settings.WINDOW_HEIGHT:
             self.gamemode.remainingBalls -= 1
+            self.gamemode.player_points += 1
             self.balls.remove(self)
             self.gamemode.check_if_over()
 
         # Checks if the ball passed the left or right screen
         if self.rect.right < 0 or self.rect.left > self.settings.WINDOW_WIDTH:
             self.gamemode.remainingBalls -= 1
+            self.gamemode.player_points += 1
             self.balls.remove(self)
             self.gamemode.check_if_over()
 

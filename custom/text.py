@@ -23,3 +23,6 @@ class Text:
 
     def draw(self):
         self.screen.blit(self.msg_image, self.msg_image_rect)
+
+    def update_message(self):
+        self.msg_image = self.font.render(self.message, True, self.text_color, self.background_color)

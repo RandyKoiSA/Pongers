@@ -69,6 +69,7 @@ class LevelSelectScreen:
     def check_button_collision(self, mouse_x, mouse_y):
         for level in self.levels:
             if level.rect.collidepoint(mouse_x, mouse_y):
+                self.gamemode.reset_game()
                 self.gamemode.game_active = True
                 self.screenmanager.bLevelSelect_Screen = False
                 self.gamemode.add_gamemode_rules(rules=level.rules)

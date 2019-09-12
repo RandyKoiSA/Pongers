@@ -4,7 +4,9 @@ from balls.ball_type_one import BallTypeOne
 from balls.ball_type_zero import BallTypeZero
 from core import gamefunctions as gf
 from players.side_player import SidePlayer
+from custom.text import Text
 from enemies.easyenemy_sidepaddle import EasyEnemySidePaddle as EnemyTypeOne
+import pygame
 
 
 class GameScreen:
@@ -25,6 +27,16 @@ class GameScreen:
         # Initialize the ball sprite
         self.balls = []
 
+        # Initialize net sprite
+        self.netimage = pygame.image.load('imgs/net.png')
+        self.netrect = self.netimage.get_rect()
+        self.netrect.y = self.settings.WINDOW_HEIGHT/2 - 5
+
+        # Initialize player point text
+        self.player_score = Text(self.screen, self.settings, str(self.gamemode.player_points),
+                                      text_color=(0, 0, 0), background_color=self.settings.BACKGROUND_COLOR,
+                                      pos_x=self.settings.WINDOW_WIDTH/2, pos_y=self.settings.WINDOW_HEIGHT/2 + 25)
+
     def run(self):
         """ Run all the function needed to update and display the screen """
         self.check_events()
@@ -37,6 +49,10 @@ class GameScreen:
 
     def update(self):
         """ Update all the sprites in the game screen """
+        # Update the player score
+        self.player_score.message = str(self.gamemode.player_points)
+        self.player_score.update_message()
+
         # Update all the player sprites
         for player in self.players:
             player.update()
@@ -49,6 +65,12 @@ class GameScreen:
 
     def draw(self):
         """ Draw all the sprites in the game screen """
+        # Draw net
+        self.screen.blit(self.netimage, self.netrect)
+
+        # Draw player score
+        self.player_score.draw()
+
         # Draw all player sprites in player group
         for player in self.players:
             player.draw()
