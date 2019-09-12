@@ -7,7 +7,8 @@
 				"height": 5,
 				"color": [0, 0, 0],
 				"velocity": [20, 20],
-				"player_type": 0
+				"player_type": 0,
+				"imagepath": "imgs/playerbar.png"
 			},
 			{
 				"width": 5,
@@ -15,7 +16,8 @@
 				"color": [0, 0, 0],
 				"velocity": [20, 20],
 				"player_type": 1,
-				"rightside": true
+				"rightside": true,
+				"imagepath": "imgs/playersidebar.png"
 			},
 			{
 				"width": 5,
@@ -23,7 +25,8 @@
 				"color": [0, 0, 0],
 				"velocity": [20, 20],
 				"player_type": 1,
-				"rightside": false
+				"rightside": false,
+				"imagepath": "imgs/playersidebar.png"
 			}
 		],
 		"enemyGroup": [
@@ -32,7 +35,8 @@
 				"height": 5,
 				"color": [255, 255, 0],
 				"velocity": [10, 10],
-				"enemy_type": 0
+				"enemy_type": 0,
+				"imagepath": "imgs/enemybar.png"
 			},
 			{
 				"width": 5,
@@ -41,7 +45,8 @@
 				"velocity": [10, 10],
 				"enemy_type": 1,
 				"ismovingup": true,
-				"rightside": true
+				"rightside": true,
+				"imagepath": "imgs/enemysidebar.png"
 			},
 			{
 				"width": 5,
@@ -50,7 +55,8 @@
 				"velocity": [10, 10],
 				"enemy_type": 1,
 				"ismovingup": false,
-				"rightside": false
+				"rightside": false,
+				"imagepath": "imgs/enemysidebar.png"
 			}
 		],
 		"ballGroup": [

@@ -4,7 +4,7 @@ from custom.vector_point import Vector
 
 class EnemyBase:
     """ Base for enemy ai """
-    def __init__(self, screen, settings, enemy_type, width, height, color, velocity):
+    def __init__(self, screen, settings, enemy_type, width, height, color, velocity, imagepath):
         """ Initialize the default values of the enemy """
         # Enemy's height size
         self.enemy_height = height
@@ -26,3 +26,6 @@ class EnemyBase:
 
         # Enemy Type, to determine what type of enemy it is
         self.enemy_type = enemy_type
+
+        # Get image for the sprite
+        self.image = pygame.image.load(imagepath)

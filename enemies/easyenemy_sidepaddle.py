@@ -1,20 +1,21 @@
 from enemies.enemybase import EnemyBase
-import pygame
 
 
 class EasyEnemySidePaddle(EnemyBase):
     """ Easy Enemy that spawns a vertical bars """
-    def __init__(self, screen, settings, enemy_type, brightside, width=5, height=100, color=(0, 255, 0),
+    def __init__(self, screen, settings, enemy_type, rightside, imagepath, width=5, height=100, color=(0, 255, 0),
                  velocity=(20, 20)):
-        super().__init__(screen, settings, enemy_type, width, height, color, velocity)
+        super().__init__(screen, settings, enemy_type, width, height, color, velocity, imagepath)
         self.isMovingUp = True
 
         # Creating a rectangle for the enemy
-        if brightside:
-            self.rect = pygame.Rect((15, self.settings.WINDOW_HEIGHT / 4), (self.enemy_width, self.enemy_height))
+        self.rect = self.image.get_rect()
+        if rightside:
+            self.rect.x = 15
+            self.rect.y = self.settings.WINDOW_HEIGHT / 4
         else:
-            self.rect = pygame.Rect((self.settings.WINDOW_WIDTH - 25, self.settings.WINDOW_HEIGHT / 4),
-                                    (self.enemy_width, self.enemy_height))
+            self.rect.x = self.settings.WINDOW_WIDTH - 25
+            self.rect.y = self.settings.WINDOW_HEIGHT / 4
 
     def update(self):
         """ Update the enemy movements """
@@ -26,7 +27,8 @@ class EasyEnemySidePaddle(EnemyBase):
         self.check_boundaries()
 
     def draw(self):
-        pygame.draw.rect(self.screen, self.color, self.rect, 5)
+        # pygame.draw.rect(self.screen, self.color, self.rect, 5)
+        self.screen.blit(self.image, self.rect)
 
     def check_boundaries(self):
         if self.rect.top <= 0:

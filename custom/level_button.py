@@ -1,7 +1,7 @@
 from custom.button import Button
 
 
-class Level_Button(Button):
+class LevelButton(Button):
     """ Level Button will hold the descriptions of the level. """
     def __init__(self, screen, settings, levelName, playergroup, enemygroup, ballgroup, rules,
                  button_width=100, button_height=100, position_x=0, position_y=0, button_color=(0, 255, 0),

@@ -1,12 +1,11 @@
-import pygame
-import math
 import random
 from custom.vector_point import Vector
 
 
 class BallBase:
     """ Ball Base that has basic/general attribute for what a ball requires"""
-    def __init__(self, screen, settings, gamemode, ball_type, color, velocity, players, enemies, isRandom, degree, balls):
+    def __init__(self, screen, settings, gamemode, ball_type, color, velocity,
+                 players, enemies, israndom, degree, balls):
         """ Initialize the default values of a ball """
         # ball type, the type of ball it is
         self.ball_type = ball_type
@@ -45,7 +44,7 @@ class BallBase:
         self.degree = degree
 
         # spawn ball at random direction : EDITABLE
-        self.bRandomDirection = isRandom
+        self.bRandomDirection = israndom
 
         # get the list of balls that are currently in play
         self.balls = balls
@@ -58,4 +57,3 @@ class BallBase:
 
     def update_radian(self):
         self.radian = self.degree * (self.PI/180) * -1
-

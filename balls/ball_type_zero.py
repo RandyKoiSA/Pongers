@@ -2,11 +2,14 @@ from balls.ballbase import BallBase
 import pygame
 import math
 
-class Ball_Type_Zero(BallBase):
+
+class BallTypeZero(BallBase):
     """ Ball Type Zero, will bounce wall the left and right walls. """
-    def __init__(self, screen, settings, gamemode, ball_type, color, velocity, players, enemies, isRandom, degree, balls):
+    def __init__(self, screen, settings, gamemode, ball_type, color,
+                 velocity, players, enemies, israndom, degree, balls):
         """ Initialize properties """
-        super().__init__(screen, settings, gamemode, ball_type, color, velocity, players, enemies, isRandom, degree, balls)
+        super().__init__(screen, settings, gamemode, ball_type, color,
+                         velocity, players, enemies, israndom, degree, balls)
 
         # creating a rect object for the ball
         self.rect = pygame.Rect(((self.settings.WINDOW_WIDTH / 2) - (self.ball_width / 2),
@@ -14,9 +17,16 @@ class Ball_Type_Zero(BallBase):
                                 (self.ball_width, self.ball_height))
 
     def update(self):
+        # Calculate the amount of y position moved
         self.rect.centery += math.sin(self.radian) * self.velocity.y
+
+        # Calculate the amount of x position moved
         self.rect.centerx += math.cos(self.radian) * self.velocity.x
+
+        # Check if the ball hit the edges of the screen
         self.check_boundaries()
+
+        # Check if the ball hit any of the sprites on the screen
         self.check_collision()
 
     def draw(self):
@@ -29,7 +39,7 @@ class Ball_Type_Zero(BallBase):
         if self.rect.right > self.settings.WINDOW_WIDTH:
             self.velocity.x *= -1
 
-        if self.rect.top - self.ball_height < 0 and self.rect.bottom + self.ball_width > self.settings.WINDOW_HEIGHT :
+        if self.rect.top - self.ball_height < 0 and self.rect.bottom + self.ball_width > self.settings.WINDOW_HEIGHT:
             self.gamemode.remainingBalls -= 1
             self.balls.remove(self)
             self.gamemode.check_if_over()

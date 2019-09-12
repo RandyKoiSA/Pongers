@@ -1,8 +1,9 @@
 import pygame
 
-class Player_Base:
+
+class PlayerBase:
     """ Player base that other players will inherits this class. """
-    def __init__(self, screen, controller, settings, player_type, width, height, color, velocity):
+    def __init__(self, screen, controller, settings, player_type, width, height, color, velocity, imagepath):
         """ Initialize default values. """
         # Reference to the screen to draw on
         self.screen = screen
@@ -27,3 +28,6 @@ class Player_Base:
 
         # Velocity, the x and y velocity of player's bar speed
         self.velocity = velocity
+
+        # Image path to load
+        self.image = pygame.image.load(imagepath)

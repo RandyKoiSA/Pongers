@@ -16,7 +16,7 @@ class ScreenManager:
         self.controller = controller
 
         # Initialize all the screens here
-        self.game_screen = gs.GameScreen(self.screen, self.settings, self.gamemode, self.controller, self)
+        self.game_screen = gs.GameScreen(self.screen, self.settings, self.gamemode, self.controller)
         self.mainmenu_screen = ms.MainMenuScreen(self.screen, self.settings, self.gamemode, self.controller, self)
         self.level_select_screen = ls.LevelSelectScreen(self.screen, self.settings, self.gamemode, self)
 
@@ -27,7 +27,7 @@ class ScreenManager:
         if self.gamemode.game_over:
             self.gamemode.game_active = False
             self.gamemode.game_over = False
-            self.game_screen = gs.GameScreen(self.screen, self.settings, self.gamemode, self.controller, self)
+            self.game_screen = gs.GameScreen(self.screen, self.settings, self.gamemode, self.controller)
             self.controller.reset_controller()
 
         if self.gamemode.game_active:

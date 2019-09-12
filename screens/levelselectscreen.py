@@ -3,7 +3,8 @@ import pygame
 import sys
 from pygame.locals import *
 from custom import text
-from custom.level_button import Level_Button
+from custom.level_button import LevelButton
+
 
 class LevelSelectScreen:
     """ Level Select Screen display the levels that can be played by the player """
@@ -22,7 +23,6 @@ class LevelSelectScreen:
         self.arrange_level()
         print(self.levels)
 
-
     def run(self):
         self.check_events()
         # self.update()
@@ -37,9 +37,6 @@ class LevelSelectScreen:
                 mouse_x, mouse_y = pygame.mouse.get_pos()
                 self.check_button_collision(mouse_x, mouse_y)
 
-
-    # def update(self):
-
     def draw(self):
         self.title.draw()
 
@@ -52,13 +49,9 @@ class LevelSelectScreen:
             data = json.load(read_file)
             print(data)
             for x in data:
-                print(str(data[x]['levelName']))
-                print(str(data[x]['playerGroup']))
-                print(str(data[x]['enemyGroup']))
-                print(str(data[x]['ballGroup']))
-                self.levels.append(Level_Button(self.screen, self.screen, data[x]['levelName'],
-                                                data[x]["playerGroup"], data[x]["enemyGroup"], data[x]["ballGroup"],
-                                                data[x]["gamemode"]))
+                self.levels.append(LevelButton(self.screen, self.screen, data[x]['levelName'],
+                                               data[x]["playerGroup"], data[x]["enemyGroup"], data[x]["ballGroup"],
+                                               data[x]["gamemode"]))
 
     def arrange_level(self):
         counter = 0
@@ -80,4 +73,3 @@ class LevelSelectScreen:
                 self.screenmanager.bLevelSelect_Screen = False
                 self.gamemode.add_gamemode_rules(rules=level.rules)
                 self.screenmanager.game_screen.create_sprites(level.playerGroup, level.enemyGroup, level.ballGroup)
-
