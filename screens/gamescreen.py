@@ -32,10 +32,15 @@ class GameScreen:
         self.netrect = self.netimage.get_rect()
         self.netrect.y = self.settings.WINDOW_HEIGHT/2 - 5
 
-        # Initialize player point text
+        # Initialize player score text
         self.player_score = Text(self.screen, self.settings, str(self.gamemode.player_points),
                                       text_color=(0, 0, 0), background_color=self.settings.BACKGROUND_COLOR,
                                       pos_x=self.settings.WINDOW_WIDTH/2, pos_y=self.settings.WINDOW_HEIGHT/2 + 25)
+
+        # Initialize enemy score text
+        self.enemy_score = Text(self.screen, self.settings, str(self.gamemode.enemy_points),
+                                text_color=(0, 0, 0), background_color=self.settings.BACKGROUND_COLOR,
+                                pos_x=self.settings.WINDOW_WIDTH/2, pos_y=self.settings.WINDOW_HEIGHT/2 - 25)
 
     def run(self):
         """ Run all the function needed to update and display the screen """
@@ -52,6 +57,9 @@ class GameScreen:
         # Update the player score
         self.player_score.message = str(self.gamemode.player_points)
         self.player_score.update_message()
+
+        self.enemy_score.message = str(self.gamemode.enemy_points)
+        self.enemy_score.update_message()
 
         # Update all the player sprites
         for player in self.players:
@@ -71,6 +79,9 @@ class GameScreen:
         # Draw player score
         self.player_score.draw()
 
+        # Draw enemy score
+        self.enemy_score.draw()
+        
         # Draw all player sprites in player group
         for player in self.players:
             player.draw()

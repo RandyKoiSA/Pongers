@@ -36,15 +36,15 @@ class BallTypeOne(BallBase):
     def check_boundaries(self):
         # Checks if the ball passed the top or bottom screen
         if self.rect.bottom < 0 or self.rect.top > self.settings.WINDOW_HEIGHT:
+            self.check_if_player_scored()
             self.gamemode.remainingBalls -= 1
-            self.gamemode.player_points += 1
             self.balls.remove(self)
             self.gamemode.check_if_over()
 
         # Checks if the ball passed the left or right screen
         if self.rect.right < 0 or self.rect.left > self.settings.WINDOW_WIDTH:
+            self.check_if_player_scored()
             self.gamemode.remainingBalls -= 1
-            self.gamemode.player_points += 1
             self.balls.remove(self)
             self.gamemode.check_if_over()
 
@@ -85,3 +85,9 @@ class BallTypeOne(BallBase):
             if player.player_type == 1:
                 if self.rect.colliderect(player):
                     self.velocity.x *= -1
+
+    def check_if_player_scored(self):
+        if self.rect.centery < self.settings.WINDOW_HEIGHT / 2:
+            self.gamemode.player_points += 1
+        else:
+            self.gamemode.enemy_points += 1
