@@ -35,7 +35,8 @@ class BallBase:
         self.ball_height = 25
 
         # ball's velocity speed : EDITABLE
-        self.velocity = Vector(velocity[0], velocity[1])
+        self.velocity_x = velocity[0]
+        self.velocity_y = velocity[1]
 
         # ball's color : EDITABLE
         self.color = color

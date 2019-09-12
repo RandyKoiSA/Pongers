@@ -4,6 +4,10 @@
     <list default="true" id="ea23605e-d305-4964-9f5f-358eff9a1f1b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/balls/ball_type_one.py" beforeDir="false" afterPath="$PROJECT_DIR$/balls/ball_type_one.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/balls/ball_type_zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/balls/ball_type_zero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/balls/ballbase.py" beforeDir="false" afterPath="$PROJECT_DIR$/balls/ballbase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/gamemode.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/gamemode.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels_file.json" beforeDir="false" afterPath="$PROJECT_DIR$/levels_file.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/gamescreen.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/gamescreen.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

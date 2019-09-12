@@ -81,7 +81,7 @@ class GameScreen:
 
         # Draw enemy score
         self.enemy_score.draw()
-        
+
         # Draw all player sprites in player group
         for player in self.players:
             player.draw()

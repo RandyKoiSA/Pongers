@@ -34,10 +34,10 @@ class BallTypeZero(BallBase):
 
     def check_boundaries(self):
         if self.rect.left < 0:
-            self.velocity.x *= -1
+            self.velocity_x *= -1
 
         if self.rect.right > self.settings.WINDOW_WIDTH:
-            self.velocity.x *= -1
+            self.velocity_x *= -1
 
         if self.rect.top - self.ball_height < 0 and self.rect.bottom + self.ball_width > self.settings.WINDOW_HEIGHT:
             self.gamemode.remainingBalls -= 1
@@ -52,7 +52,7 @@ class BallTypeZero(BallBase):
         # Scan if the ball collides with any of the enemies
         for enemy in self.enemies:
             if self.rect.colliderect(enemy):
-                self.velocity.y *= -1
+                self.velocity_y *= -1
 
         # Checks if the ball past the top and bottom screen
         if self.rect.top < 0 or self.rect.bottom > self.settings.WINDOW_HEIGHT:
@@ -66,19 +66,19 @@ class BallTypeZero(BallBase):
             if player.player_type == 0:
                 if self.rect.colliderect(player):
                     # Checks if the ball collides on top of the player bar
-                    if self.velocity.x > 0:
+                    if self.velocity_x > 0:
                         if player.controller.MOVELEFT:
-                            self.degree += self.velocity.x * 1.5 + 10
+                            self.degree += self.velocity_x * 1.5 + 10
                         if player.controller.MOVERIGHT:
-                            self.degree -= self.velocity.x * 1.5 + 10
+                            self.degree -= self.velocity_x * 1.5 + 10
                         self.update_radian()
                     else:
                         if player.controller.MOVELEFT:
-                            self.degree += self.velocity.x * 1.5 - 10
+                            self.degree += self.velocity_x * 1.5 - 10
                         if player.controller.MOVERIGHT:
-                            self.degree -= self.velocity.x * 1.5 - 10
-                    self.velocity.y *= -1
+                            self.degree -= self.velocity_x * 1.5 - 10
+                    self.velocity_y *= -1
             # Collision to player's vertical side bars
             if player.player_type == 1:
                 if self.rect.colliderect(player):
-                    self.velocity.x *= -1
+                    self.velocity_x *= -1
