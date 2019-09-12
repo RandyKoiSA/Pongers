@@ -4,7 +4,7 @@ import math
 
 class Ball_Type_Zero(BallBase):
     """ Ball Type Zero, will bounce wall the left and right walls. """
-    def __init__(self, screen, settings, gamemode, ball_type, color, velocity, players, enemies, isRandom, degree):
+    def __init__(self, screen, settings, gamemode, ball_type, color, velocity, players, enemies, isRandom, degreez):
         """ Initialize properties """
         super().__init__(screen, settings, gamemode, ball_type, color, velocity, players, enemies, isRandom, degree)
 
@@ -41,7 +41,8 @@ class Ball_Type_Zero(BallBase):
 
         # Checks if the ball past the top and bottom screen
         if self.rect.top < 0 or self.rect.bottom > self.settings.WINDOW_HEIGHT:
-            self.gamemode.game_over = True
+            self.gamemode.remainingBalls -= 1
+            self.gamemode.check_if_over()
 
     def check_player_collision(self):
         """ Checks if the ball collides with the player"""

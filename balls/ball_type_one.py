@@ -25,9 +25,11 @@ class Ball_Type_One(BallBase):
 
     def check_boundaries(self):
         if self.rect.top <= 0 or self.rect.bottom >= self.settings.WINDOW_HEIGHT:
-            self.gamemode.game_over = True
+            self.gamemode.remainingBalls -= 1
+            self.gamemode.check_if_over()
         if self.rect.left <= 0 or self.rect.right >= self.settings.WINDOW_WIDTH:
-            self.gamemode.game_over = True
+            self.gamemode.remainingBalls -= 1
+            self.gamemode.check_if_over()
 
     def check_collision(self):
         """ Detects if the ball has hit the """
@@ -37,11 +39,10 @@ class Ball_Type_One(BallBase):
         # Scan if the ball collides with any of the enemies
         for enemy in self.enemies:
             if self.rect.colliderect(enemy):
-                self.velocity.y *= -1
-
-        # Checks if the ball past the top and bottom screen
-        if self.rect.top < 0 or self.rect.bottom > self.settings.WINDOW_HEIGHT:
-            self.gamemode.game_over = True
+                if enemy.enemy_type == 0:
+                    self.velocity.y *= -1
+                if enemy.enemy_type == 1:
+                    self.velocity.x *= -1
 
     def check_player_collision(self):
         """ Checks if the ball collides with the player"""

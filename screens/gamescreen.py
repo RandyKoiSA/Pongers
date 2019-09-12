@@ -4,6 +4,7 @@ from balls.ball_type_one import Ball_Type_One
 from balls.ball_type_zero import Ball_Type_Zero
 from core import gamefunctions as gf
 from players.side_player import SidePlayer
+from enemies.easyenemy_sidepaddle import EasyEnemySidePaddle as EnemyTypeOne
 
 class GameScreen:
     """ Game screen that display the actually game play of pong"""
@@ -70,14 +71,19 @@ class GameScreen:
                 new_player = Player(self.screen, self.controller, self.settings, player['player_type'])
                 self.players.append(new_player)
             elif player['player_type'] == 1:
-                new_player = SidePlayer(self.screen, self.controller, self.settings, player['bRightSide'], player['player_type'])
+                new_player = SidePlayer(self.screen, self.controller, self.settings, player['rightside'], player['player_type'])
                 self.players.append(new_player)
 
         # Add all new enemies into the game's enemy group
         for enemy in enemies:
-            new_enemy = EasyEnemy(self.screen, self.settings, enemy['enemy_type'], enemy['width'],
-                                  enemy['height'], enemy['color'], enemy['velocity'])
-            self.enemies.append(new_enemy)
+            if enemy['enemy_type'] == 0:
+                new_enemy = EasyEnemy(self.screen, self.settings, enemy['enemy_type'], enemy['width'],
+                                      enemy['height'], enemy['color'], enemy['velocity'])
+                self.enemies.append(new_enemy)
+            if enemy['enemy_type'] == 1:
+                new_enemy = EnemyTypeOne(self.screen, self.settings, enemy['enemy_type'], enemy['rightside'],
+                                         enemy['width'], enemy['height'], enemy['color'], enemy['velocity'])
+                self.enemies.append(new_enemy)
 
         # Add all new balls into the game's ball group
         for ball in balls:
@@ -86,6 +92,8 @@ class GameScreen:
                                           self.players, self.enemies, ball['isRandom'], ball['degree'])
                 self.balls.append(new_ball)
             if ball['ball_type'] == 1:
-                new_ball = Ball_Type_One(self.screen, self.settings, self.gamemode, ball['ball_type'], ball['color'], ball['velocity'],
-                                    self.players, self.enemies, ball['isRandom'], ball['degree'])
+                new_ball = Ball_Type_One(self.screen, self.settings, self.gamemode, ball['ball_type'], ball['color'],
+                                         ball['velocity'], self.players, self.enemies, ball['isRandom'], ball['degree'])
                 self.balls.append(new_ball)
+
+        self.gamemode.remainingBalls = len(balls)

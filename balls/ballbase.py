@@ -53,7 +53,6 @@ class BallBase:
         # radian to find the angle the ball will go. Formula radian = degree * (3.14/180)
         self.radian = self.degree * (self.PI/180) * -1
 
-
     def update_radian(self):
         self.radian = self.degree * (self.PI/180) * -1
 

@@ -26,5 +26,3 @@ class EnemyBase:
 
         # Enemy Type, to determine what type of enemy it is
         self.enemy_type = enemy_type
-
-
