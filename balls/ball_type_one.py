@@ -5,9 +5,9 @@ import math
 
 class Ball_Type_One(BallBase):
     """ Ball Type One, a ball that no wall collision """
-    def __init__(self, screen, settings, gamemode, ball_type, color, velocity, players, enemies, isRandom, degree=0):
+    def __init__(self, screen, settings, gamemode, ball_type, color, velocity, players, enemies, isRandom, degree, balls):
         """ Initialize properties """
-        super().__init__(screen, settings, gamemode, ball_type, color, velocity, players, enemies, isRandom, degree)
+        super().__init__(screen, settings, gamemode, ball_type, color, velocity, players, enemies, isRandom, degree, balls)
 
         # creating a rect object for the ball
         self.rect = pygame.Rect(((self.settings.WINDOW_WIDTH / 2) - (self.ball_width / 2),
@@ -24,11 +24,13 @@ class Ball_Type_One(BallBase):
         pygame.draw.ellipse(self.screen, self.color, self.rect, 0)
 
     def check_boundaries(self):
-        if self.rect.top <= 0 or self.rect.bottom >= self.settings.WINDOW_HEIGHT:
+        if self.rect.bottom  < 0 or self.rect.top > self.settings.WINDOW_HEIGHT:
             self.gamemode.remainingBalls -= 1
+            self.balls.remove(self)
             self.gamemode.check_if_over()
-        if self.rect.left <= 0 or self.rect.right >= self.settings.WINDOW_WIDTH:
+        if self.rect.right < 0 or self.rect.left > self.settings.WINDOW_WIDTH:
             self.gamemode.remainingBalls -= 1
+            self.balls.remove(self)
             self.gamemode.check_if_over()
 
     def check_collision(self):

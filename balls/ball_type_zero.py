@@ -4,9 +4,9 @@ import math
 
 class Ball_Type_Zero(BallBase):
     """ Ball Type Zero, will bounce wall the left and right walls. """
-    def __init__(self, screen, settings, gamemode, ball_type, color, velocity, players, enemies, isRandom, degreez):
+    def __init__(self, screen, settings, gamemode, ball_type, color, velocity, players, enemies, isRandom, degree, balls):
         """ Initialize properties """
-        super().__init__(screen, settings, gamemode, ball_type, color, velocity, players, enemies, isRandom, degree)
+        super().__init__(screen, settings, gamemode, ball_type, color, velocity, players, enemies, isRandom, degree, balls)
 
         # creating a rect object for the ball
         self.rect = pygame.Rect(((self.settings.WINDOW_WIDTH / 2) - (self.ball_width / 2),
@@ -28,6 +28,11 @@ class Ball_Type_Zero(BallBase):
 
         if self.rect.right > self.settings.WINDOW_WIDTH:
             self.velocity.x *= -1
+
+        if self.rect.top - self.ball_height < 0 and self.rect.bottom + self.ball_width > self.settings.WINDOW_HEIGHT :
+            self.gamemode.remainingBalls -= 1
+            self.balls.remove(self)
+            self.gamemode.check_if_over()
 
     def check_collision(self):
         """ Detects if the ball has hit the """

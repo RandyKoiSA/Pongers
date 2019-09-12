@@ -23,6 +23,8 @@ class Gamemode:
         else:
             self.bHasWon = False
 
+    def add_gamemode_rules(self, rules):
+        self.remainingBalls = rules['remainingballs']
 
     def reset_game(self):
         self.bHasWon = False
@@ -31,6 +33,7 @@ class Gamemode:
         self.player_points = 0
         self.enemy_points = 0
         self.remainingBalls = 0
+
 
     # def show_gameover_screen(self):
         # Show gameover screen

@@ -72,6 +72,9 @@
 				"isRandom": true,
 				"degree": 45
 			}
-		]
+		],
+		"gamemode": {
+				"remainingballs": 2
+		}
 	}
 }

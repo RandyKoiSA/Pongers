@@ -6,7 +6,7 @@ from custom.vector_point import Vector
 
 class BallBase:
     """ Ball Base that has basic/general attribute for what a ball requires"""
-    def __init__(self, screen, settings, gamemode, ball_type, color, velocity, players, enemies, isRandom, degree):
+    def __init__(self, screen, settings, gamemode, ball_type, color, velocity, players, enemies, isRandom, degree, balls):
         """ Initialize the default values of a ball """
         # ball type, the type of ball it is
         self.ball_type = ball_type
@@ -46,6 +46,9 @@ class BallBase:
 
         # spawn ball at random direction : EDITABLE
         self.bRandomDirection = isRandom
+
+        # get the list of balls that are currently in play
+        self.balls = balls
 
         if self.bRandomDirection:
             self.degree = random.randint(0, 360)

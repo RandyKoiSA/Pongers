@@ -57,7 +57,8 @@ class LevelSelectScreen:
                 print(str(data[x]['enemyGroup']))
                 print(str(data[x]['ballGroup']))
                 self.levels.append(Level_Button(self.screen, self.screen, data[x]['levelName'],
-                                                data[x]["playerGroup"], data[x]["enemyGroup"], data[x]["ballGroup"]))
+                                                data[x]["playerGroup"], data[x]["enemyGroup"], data[x]["ballGroup"],
+                                                data[x]["gamemode"]))
 
     def arrange_level(self):
         counter = 0
@@ -77,5 +78,6 @@ class LevelSelectScreen:
             if level.rect.collidepoint(mouse_x, mouse_y):
                 self.gamemode.game_active = True
                 self.screenmanager.bLevelSelect_Screen = False
+                self.gamemode.add_gamemode_rules(rules=level.rules)
                 self.screenmanager.game_screen.create_sprites(level.playerGroup, level.enemyGroup, level.ballGroup)
 

@@ -89,11 +89,10 @@ class GameScreen:
         for ball in balls:
             if ball['ball_type'] == 0:
                 new_ball = Ball_Type_Zero(self.screen, self.settings, self.gamemode, ball['ball_type'], ball['color'], ball['velocity'],
-                                          self.players, self.enemies, ball['isRandom'], ball['degree'])
+                                          self.players, self.enemies, ball['isRandom'], ball['degree'], self.balls)
                 self.balls.append(new_ball)
             if ball['ball_type'] == 1:
                 new_ball = Ball_Type_One(self.screen, self.settings, self.gamemode, ball['ball_type'], ball['color'],
-                                         ball['velocity'], self.players, self.enemies, ball['isRandom'], ball['degree'])
+                                         ball['velocity'], self.players, self.enemies, ball['isRandom'], ball['degree'],
+                                         self.balls)
                 self.balls.append(new_ball)
-
-        self.gamemode.remainingBalls = len(balls)
