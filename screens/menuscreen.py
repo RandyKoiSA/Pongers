@@ -49,7 +49,7 @@ class MainMenuScreen:
         self.draw()
 
     def check_events(self):
-        """ Checks plays input and keyboard events """
+        """ Checks players input and keyboard events """
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()

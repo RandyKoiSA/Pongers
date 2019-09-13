@@ -37,7 +37,3 @@ class Gamemode:
         self.enemy_points = 0
         self.remainingBalls = 0
 
-
-    # def show_gameover_screen(self):
-        # Show gameover screen
-

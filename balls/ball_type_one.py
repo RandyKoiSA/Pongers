@@ -95,6 +95,6 @@ class BallTypeOne(BallBase):
             self.gamemode.enemy_points += 1
 
     def check_if_remaining_balls(self):
-        if self.gamemode.remainingBalls > 0 :
+        if self.gamemode.remainingBalls > 0 and len(self.balls) is 0:
             self.balls.append(BallTypeOne(self.screen, self.settings, self.gamemode, self.ball_type, self.color,
                                           (self.velocity_x, self.velocity_y), self.players, self.enemies, True, 0, self.balls))

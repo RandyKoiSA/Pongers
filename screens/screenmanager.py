@@ -1,7 +1,7 @@
 from screens import gamescreen as gs
 from screens import menuscreen as ms
 from screens import levelselectscreen as ls
-
+from screens import gameoverscreen as gos
 
 class ScreenManager:
     """ Manages the screen that is being displayed onto the main screen.
@@ -19,21 +19,28 @@ class ScreenManager:
         self.game_screen = gs.GameScreen(self.screen, self.settings, self.gamemode, self.controller)
         self.mainmenu_screen = ms.MainMenuScreen(self.screen, self.settings, self.gamemode, self.controller, self)
         self.level_select_screen = ls.LevelSelectScreen(self.screen, self.settings, self.gamemode, self)
+        self.game_over_screen = gos.GameOverScreen(self.screen, self.settings, self.gamemode, self.controller, self)
 
         # To trigger certain screen
         self.bLevelSelect_Screen = False
 
     def run(self):
+        """ Run the screen manager and display the necessary screen. """
+        # Run game_over screen
         if self.gamemode.game_over:
-            self.gamemode.game_active = False
-            self.gamemode.game_over = False
-            self.game_screen = gs.GameScreen(self.screen, self.settings, self.gamemode, self.controller)
-            self.controller.reset_controller()
+            self.game_over_screen.run()
 
-        if self.gamemode.game_active:
+        elif self.gamemode.game_active:
             self.game_screen.run()
+
         else:
             if self.bLevelSelect_Screen:
                 self.level_select_screen.run()
             else:
                 self.mainmenu_screen.run()
+
+    def reset(self):
+        self.gamemode.game_active = False
+        self.gamemode.game_over = False
+        self.game_screen = gs.GameScreen(self.screen, self.settings, self.gamemode, self.controller)
+        self.controller.reset_controller()
