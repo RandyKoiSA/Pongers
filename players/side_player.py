@@ -12,19 +12,19 @@ class SidePlayer(PlayerBase):
 
         self.rect = self.image.get_rect()
         if not rightside:
-            self.rect.x = self.settings.WINDOW_WIDTH - self.player_width - 15
-            self.rect.y = self.settings.WINDOW_HEIGHT / 2 + self.player_height
+            self.rect.x = self.settings.WINDOW_WIDTH / 4
+            self.rect.y = 10
         else:
-            self.rect.x = 15
-            self.rect.y = self.settings.WINDOW_HEIGHT / 2 + self.player_height
+            self.rect.x = self.settings.WINDOW_WIDTH / 4
+            self.rect.y = self.settings.WINDOW_HEIGHT - 10
 
     def update(self):
         """ Update the player based on controller input """
-        if self.controller.MOVEUP:
-            self.rect.y -= self.velocity.y
+        if self.controller.MOVELEFT:
+            self.rect.x -= self.velocity.x
 
-        if self.controller.MOVEDOWN:
-            self.rect.y += self.velocity.y
+        if self.controller.MOVERIGHT:
+            self.rect.x += self.velocity.x
 
         self.check_boundaries()
 
@@ -33,8 +33,8 @@ class SidePlayer(PlayerBase):
         self.screen.blit(self.image, self.rect)
 
     def check_boundaries(self):
-        if self.rect.top <= self.settings.WINDOW_HEIGHT / 2:
-            self.rect.top = self.settings.WINDOW_HEIGHT / 2
+        if self.rect.left < 0:
+            self.rect.left = 0
 
-        if self.rect.bottom >= self.settings.WINDOW_HEIGHT:
-            self.rect.bottom = self.settings.WINDOW_HEIGHT
+        if self.rect.right >= self.settings.WINDOW_WIDTH / 2:
+            self.rect.right = self.settings.WINDOW_WIDTH / 2

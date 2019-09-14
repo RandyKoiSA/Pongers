@@ -40,6 +40,12 @@ class BallTypeOne(BallBase):
             self.gamemode.remainingBalls -= 1
             self.balls.remove(self)
             self.gamemode.check_if_over()
+            if self.gamemode.game_over:
+                if self.gamemode.bHasWon:
+                    self.settings.win_game_sound.play()
+                else:
+                    self.settings.lose_game_sound.play()
+
             self.check_if_remaining_balls()
 
         # Checks if the ball passed the left or right screen
@@ -59,9 +65,11 @@ class BallTypeOne(BallBase):
         for enemy in self.enemies:
             if self.rect.colliderect(enemy):
                 if enemy.enemy_type == 0:
-                    self.velocity_y *= -1
-                if enemy.enemy_type == 1:
                     self.velocity_x *= -1
+                if enemy.enemy_type == 1:
+                    self.velocity_y *= -1
+
+                self.ball_sound.play()
 
     def check_player_collision(self):
         """ Checks if the ball collides with the player"""
@@ -71,28 +79,34 @@ class BallTypeOne(BallBase):
                 if self.rect.colliderect(player):
                     print('horizontal bar collided')
                     # Checks if the ball collides on top of the player bar
-                    if self.velocity_x > 0:
+                    if self.velocity_y > 0:
                         if player.controller.MOVELEFT:
-                            self.degree += self.velocity_x * 1.5 + 10
+                            self.degree += self.velocity_y * 1.5 + 10
                         if player.controller.MOVERIGHT:
-                            self.degree -= self.velocity_x * 1.5 + 10
+                            self.degree -= self.velocity_y * 1.5 + 10
                         self.update_radian()
                     else:
                         if player.controller.MOVELEFT:
-                            self.degree += self.velocity_x * 1.5 - 10
+                            self.degree += self.velocity_y * 1.5 - 10
                         if player.controller.MOVERIGHT:
-                            self.degree -= self.velocity_x * 1.5 - 10
-                    self.velocity_y *= -1
+                            self.degree -= self.velocity_y * 1.5 - 10
+                    self.velocity_x *= -1
+
+                    self.ball_sound.play()
             # Collision to player's vertical side bars
             if player.player_type == 1:
                 if self.rect.colliderect(player):
-                    self.velocity_x *= -1
+                    self.velocity_y *= -1
+
+                    self.ball_sound.play()
 
     def check_if_player_scored(self):
-        if self.rect.centery < self.settings.WINDOW_HEIGHT / 2:
+        if self.rect.centerx > self.settings.WINDOW_WIDTH / 2:
             self.gamemode.player_points += 1
+            self.settings.win_point_sound.play()
         else:
             self.gamemode.enemy_points += 1
+            self.settings.lose_point_sound.play()
 
     def check_if_remaining_balls(self):
         if self.gamemode.remainingBalls > 0 and len(self.balls) is 0:

@@ -4,7 +4,7 @@ from players.player_base import PlayerBase
 
 class Player(PlayerBase):
     """ Player sprite that holds all the attribute and details of what the player has """
-    def __init__(self, screen, controller, settings, player_type, imagepath, width=100, height=5, color=(0, 0, 0),
+    def __init__(self, screen, controller, settings, player_type, imagepath, width=5, height=100, color=(0, 0, 0),
                  velocity=Vector(20, 5)):
         """ Initialise default values """
         super().__init__(screen, controller, settings, player_type, width, height, color, velocity, imagepath)
@@ -12,16 +12,16 @@ class Player(PlayerBase):
         self.rect = self.image.get_rect()
 
         # Set position of the player bar
-        self.rect.x = self.settings.WINDOW_WIDTH / 2 - self.player_width / 2
-        self.rect.y = self.settings.WINDOW_HEIGHT - self.player_height - 20
+        self.rect.x = 10
+        self.rect.y = self.settings.WINDOW_HEIGHT / 2
 
     def update(self):
         """ Update the player based on controller inputs"""
-        if self.controller.MOVELEFT:
-            self.rect.x -= self.velocity.x
+        if self.controller.MOVEUP:
+            self.rect.y -= self.velocity.y
 
-        if self.controller.MOVERIGHT:
-            self.rect.x += self.velocity.x
+        if self.controller.MOVEDOWN:
+            self.rect.y += self.velocity.y
 
         self.check_boundaries()
 
@@ -30,8 +30,8 @@ class Player(PlayerBase):
         self.screen.blit(self.image, self.rect)
 
     def check_boundaries(self):
-        if self.rect.left < 0:
-            self.rect.left = 0
+        if self.rect.top < 0:
+            self.rect.top = 0
 
-        if self.rect.right > self.settings.WINDOW_WIDTH:
-            self.rect.right = self.settings.WINDOW_WIDTH
+        if self.rect.bottom > self.settings.WINDOW_HEIGHT:
+            self.rect.bottom = self.settings.WINDOW_HEIGHT

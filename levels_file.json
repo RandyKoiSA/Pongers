@@ -64,23 +64,14 @@
 				"width": 10,
 				"height": 10,
 				"color": [0, 0, 255],
-				"velocity": [5, 5],
-				"ball_type": 1,
-				"isRandom": true,
-				"degree": 45
-			},
-			{
-				"width": 10,
-				"height": 10,
-				"color": [0, 0, 255],
-				"velocity": [10, 10],
+				"velocity": [20, 20],
 				"ball_type": 1,
 				"isRandom": true,
 				"degree": 45
 			}
 		],
 		"gamemode": {
-				"remainingballs": 3
+				"remainingballs": 5
 		}
 	}
 }

@@ -1,5 +1,5 @@
 import random
-from custom.vector_point import Vector
+import pygame
 
 
 class BallBase:
@@ -50,8 +50,14 @@ class BallBase:
         # get the list of balls that are currently in play
         self.balls = balls
 
+        # ball sound
+        self.ball_sound = pygame.mixer.Sound('wav/ballsound.wav')
+
         if self.bRandomDirection:
             self.degree = random.randint(0, 360)
+            value_speed = random.randint(5, 20)
+            self.velocity_x = value_speed
+            self.velocity_y = value_speed
 
         # radian to find the angle the ball will go. Formula radian = degree * (3.14/180)
         self.radian = self.degree * (self.PI/180) * -1

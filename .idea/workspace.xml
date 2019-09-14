@@ -2,13 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea23605e-d305-4964-9f5f-358eff9a1f1b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/screens/gameoverscreen.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/balls/ball_type_one.py" beforeDir="false" afterPath="$PROJECT_DIR$/balls/ball_type_one.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/gamemode.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/gamemode.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/balls/ballbase.py" beforeDir="false" afterPath="$PROJECT_DIR$/balls/ballbase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom/level_button.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom/level_button.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemies/easyenemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/easyenemy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemies/easyenemy_sidepaddle.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/easyenemy_sidepaddle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/enemybar.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/enemybar.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/enemysidebar.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/enemysidebar.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/playerbar.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/playerbar.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgs/playersidebar.png" beforeDir="false" afterPath="$PROJECT_DIR$/imgs/playersidebar.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/levels_file.json" beforeDir="false" afterPath="$PROJECT_DIR$/levels_file.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/menuscreen.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/menuscreen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/screenmanager.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/screenmanager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/players/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/players/player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/players/side_player.py" beforeDir="false" afterPath="$PROJECT_DIR$/players/side_player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/gamescreen.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/gamescreen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_file.json" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -195,5 +204,15 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/screens/gamescreen.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

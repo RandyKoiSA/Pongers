@@ -28,19 +28,23 @@ class GameScreen:
         self.balls = []
 
         # Initialize net sprite
-        self.netimage = pygame.image.load('imgs/net.png')
+        self.netimage = pygame.image.load('imgs/vertical-net.png')
         self.netrect = self.netimage.get_rect()
-        self.netrect.y = self.settings.WINDOW_HEIGHT/2 - 5
+        self.netrect.x = self.settings.WINDOW_WIDTH/2 - 5
 
         # Initialize player score text
         self.player_score = Text(self.screen, self.settings, str(self.gamemode.player_points),
                                       text_color=(0, 0, 0), background_color=self.settings.BACKGROUND_COLOR,
-                                      pos_x=self.settings.WINDOW_WIDTH/2, pos_y=self.settings.WINDOW_HEIGHT/2 + 25)
+                                      pos_x=self.settings.WINDOW_WIDTH/2 - 25, pos_y=self.settings.WINDOW_HEIGHT/2)
 
         # Initialize enemy score text
         self.enemy_score = Text(self.screen, self.settings, str(self.gamemode.enemy_points),
                                 text_color=(0, 0, 0), background_color=self.settings.BACKGROUND_COLOR,
-                                pos_x=self.settings.WINDOW_WIDTH/2, pos_y=self.settings.WINDOW_HEIGHT/2 - 25)
+                                pos_x=self.settings.WINDOW_WIDTH/2 + 25, pos_y=self.settings.WINDOW_HEIGHT/2)
+
+        # Background sound
+        pygame.mixer.music.load('wav/backgroundmusic.wav')
+        pygame.mixer.music.play(-1, 0.0)
 
     def run(self):
         """ Run all the function needed to update and display the screen """
@@ -66,7 +70,12 @@ class GameScreen:
             player.update()
         # Update all enemy sprites
         for enemy in self.enemies:
-            enemy.update()
+            if enemy.enemy_type is 0:
+                enemy.update(self.balls)
+            elif enemy.enemy_type is 1:
+                enemy.update(self.balls)
+            else:
+                enemy.update()
         # Update all ball sprites
         for ball in self.balls:
             ball.update()
