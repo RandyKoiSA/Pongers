@@ -3,6 +3,7 @@ from screens import menuscreen as ms
 from screens import levelselectscreen as ls
 from screens import gameoverscreen as gos
 
+
 class ScreenManager:
     """ Manages the screen that is being displayed onto the main screen.
     This will determine what screen needs to be displayed, updates the necessary stuff inside the screen and draws it
@@ -19,7 +20,7 @@ class ScreenManager:
         self.game_screen = gs.GameScreen(self.screen, self.settings, self.gamemode, self.controller)
         self.mainmenu_screen = ms.MainMenuScreen(self.screen, self.settings, self.gamemode, self.controller, self)
         self.level_select_screen = ls.LevelSelectScreen(self.screen, self.settings, self.gamemode, self)
-        self.game_over_screen = gos.GameOverScreen(self.screen, self.settings, self.gamemode, self.controller, self)
+        self.game_over_screen = gos.GameOverScreen(self.screen, self.settings, self.gamemode, self)
 
         # To trigger certain screen
         self.bLevelSelect_Screen = False

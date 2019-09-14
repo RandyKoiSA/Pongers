@@ -40,9 +40,7 @@ class EasyEnemy(EnemyBase):
         # When the enemy bar hits the left boundary, move right
         if self.rect.top < 0:
             self.rect.top = 0
-            self.isMovingRight = False
 
         # When the enemy bar hits the right boundary, move left
         if self.rect.bottom > self.settings.WINDOW_HEIGHT:
             self.rect.bottom = self.settings.WINDOW_HEIGHT
-            self.isMovingRight = True

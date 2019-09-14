@@ -1,4 +1,4 @@
-from balls.ball_type_one import BallTypeOne
+
 
 class Gamemode:
     """ Game mode defines the rules and checks whether the player has won or lost the game. """
@@ -19,7 +19,6 @@ class Gamemode:
             # self.show_gameover_screen()
             self.game_over = True
 
-
     def check_if_won(self):
         if self.player_points > self.enemy_points:
             self.bHasWon = True
@@ -36,4 +35,3 @@ class Gamemode:
         self.player_points = 0
         self.enemy_points = 0
         self.remainingBalls = 0
-

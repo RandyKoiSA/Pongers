@@ -3,9 +3,10 @@ from custom.text import Text
 import pygame
 from pygame.locals import *
 
-class GameOverScreen():
+
+class GameOverScreen:
     """ Gameover screen displays if you have won or lost. """
-    def __init__(self, screen, settings, gamemode, controller, screenmanager):
+    def __init__(self, screen, settings, gamemode, screenmanager):
         """ Initialize properties """
         self.screen = screen
 
