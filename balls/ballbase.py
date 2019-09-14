@@ -4,9 +4,10 @@ import pygame
 
 class BallBase:
     """ Ball Base that has basic/general attribute for what a ball requires"""
-    def __init__(self, screen, settings, gamemode, ball_type, color, velocity,
-                 players, enemies, israndom, degree, balls):
+    def __init__(self, screen, settings, gamemode, ball_type, color, velocity, players, enemies, israndom, degree,
+                 balls):
         """ Initialize the default values of a ball """
+
         # ball type, the type of ball it is
         self.ball_type = ball_type
 
@@ -53,6 +54,7 @@ class BallBase:
         # ball sound
         self.ball_sound = pygame.mixer.Sound('wav/ballsound.wav')
 
+        # Set new values of direction of ball and speed if random direction is enabled
         if self.bRandomDirection:
             self.degree = random.randint(0, 360)
             value_speed = random.randint(10, 20)
@@ -63,4 +65,5 @@ class BallBase:
         self.radian = self.degree * (self.PI/180) * -1
 
     def update_radian(self):
+        """ Update the radian to get the new angle for the ball to move at."""
         self.radian = self.degree * (self.PI/180) * -1

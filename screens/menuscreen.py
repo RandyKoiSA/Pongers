@@ -8,7 +8,7 @@ from pygame.locals import *
 class MainMenuScreen:
     """ Main Menu Screen, this will display buttons for the user to interact with before playing """
     def __init__(self, screen, settings, gamemode, controller, screenmanager):
-
+        # Initializing properties
         self.screen = screen
 
         self.settings = settings
@@ -19,6 +19,7 @@ class MainMenuScreen:
 
         self.screenmanager = screenmanager
 
+        # Initializing the play button
         self.play_button = button.Button(self.screen,
                                          self.settings,
                                          button_height=50,
@@ -29,6 +30,7 @@ class MainMenuScreen:
                                          text_color=(255, 255, 255),
                                          button_color=(0, 0, 0))
 
+        # Initializing the quit button
         self.quit_button = button.Button(self.screen,
                                          self.settings,
                                          button_height=50,
@@ -39,11 +41,13 @@ class MainMenuScreen:
                                          text_color=(255, 255, 255),
                                          button_color=(0, 0, 0))
 
+        # Initializing the title text
         self.title = text.Text(self.screen, self.settings, message='PONG BY RANDY LE',
                                pos_x=self.settings.WINDOW_WIDTH/2, pos_y=50,
                                background_color=self.settings.BACKGROUND_COLOR)
 
     def run(self):
+        """ Screen's game-loop method"""
         self.check_events()
         # self.update()
         self.draw()
@@ -60,9 +64,8 @@ class MainMenuScreen:
                 mouse_x, mouse_y = pygame.mouse.get_pos()
                 self.check_button_collision(mouse_x, mouse_y)
 
-    # def update(self):
-
     def draw(self):
+        """ Draws all the sprites in the main menu screen """
         self.play_button.draw()
         self.quit_button.draw()
         self.title.draw()

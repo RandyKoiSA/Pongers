@@ -7,8 +7,11 @@ class Player(PlayerBase):
     def __init__(self, screen, controller, settings, player_type, imagepath, width=5, height=100, color=(0, 0, 0),
                  velocity=Vector(20, 5)):
         """ Initialise default values """
+
+        # Initializing super class properties
         super().__init__(screen, controller, settings, player_type, width, height, color, velocity, imagepath)
 
+        # Initializing rectangle for the player bar
         self.rect = self.image.get_rect()
 
         # Set position of the player bar
@@ -26,10 +29,11 @@ class Player(PlayerBase):
         self.check_boundaries()
 
     def draw(self):
-        # pygame.draw.rect(self.screen, self.color, self.rect, 5)
+        """ Draws the player bar onto the given screen """
         self.screen.blit(self.image, self.rect)
 
     def check_boundaries(self):
+        """ Checks if the player bar has went out of bounds """
         if self.rect.top < 0:
             self.rect.top = 0
 

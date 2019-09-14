@@ -55,10 +55,11 @@ class GameScreen:
 
     def update(self):
         """ Update all the sprites in the game screen """
-        # Update the player score
+        # Update the player's score
         self.player_score.message = str(self.gamemode.player_points)
         self.player_score.update_message()
 
+        # Update the enemy's score
         self.enemy_score.message = str(self.gamemode.enemy_points)
         self.enemy_score.update_message()
 
@@ -108,7 +109,7 @@ class GameScreen:
         self.create_balls(balls)
 
     def create_players(self, players):
-        # Add all the new players into the game's players group
+        """ Add all the new players into the game's players group """
         for player in players:
             print(player['width'])
             if player['player_type'] == 0:
@@ -121,7 +122,7 @@ class GameScreen:
                 self.players.append(new_player)
 
     def create_enemies(self, enemies):
-        # Add all new enemies into the game's enemy group
+        """ Add all new enemies into the game's enemy group """
         for enemy in enemies:
             if enemy['enemy_type'] == 0:
                 new_enemy = EasyEnemy(self.screen, self.settings, enemy['enemy_type'], enemy['imagepath'],
@@ -134,7 +135,7 @@ class GameScreen:
                 self.enemies.append(new_enemy)
 
     def create_balls(self, balls):
-        # Add all new balls into the game's ball group
+        """ Add all new balls into the game's ball group """
         for ball in balls:
             if ball['ball_type'] == 0:
                 new_ball = BallTypeZero(self.screen, self.settings, self.gamemode,

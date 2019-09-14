@@ -6,6 +6,8 @@ class EasyEnemy(EnemyBase):
     def __init__(self, screen, settings, enemy_type, imagepath, width=100,
                  height=5, color=(0, 255, 0), velocity=(20, 20)):
         """ Initialize default values"""
+
+        # Initialize super parent
         super().__init__(screen, settings, enemy_type, width, height, color, velocity, imagepath)
 
         # Create the sprite
@@ -15,12 +17,15 @@ class EasyEnemy(EnemyBase):
 
     def update(self, balls):
         """ Update the easy enemy position and logic """
+
         # Find closest ball near the bar
         closest_ball = [self.settings.WINDOW_WIDTH/2, 0]
+
         # Find the closest ball
         for ball in balls:
             if ball.rect.x > int(closest_ball[0]):
                 closest_ball = ball.rect
+
         # Checks if the ball is on the enemy side
         if closest_ball[0] > self.settings.WINDOW_WIDTH/2:
             #
@@ -32,7 +37,7 @@ class EasyEnemy(EnemyBase):
         self.check_boundaries()
 
     def draw(self):
-        # pygame.draw.rect(self.screen, self.color, self.rect, 5)
+        """ Draw the enemy bar onto the given screen. """
         self.screen.blit(self.image, self.rect)
 
     def check_boundaries(self):

@@ -36,4 +36,5 @@ class Button:
         self.screen.blit(self.msg_image, self.msg_image_rect)
 
     def update_position(self):
+        """ Add the message at the center of the button """
         self.msg_image_rect.center = self.rect.center

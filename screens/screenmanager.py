@@ -41,6 +41,7 @@ class ScreenManager:
                 self.mainmenu_screen.run()
 
     def reset(self):
+        """ Resets the game mode and game screen"""
         self.gamemode.game_active = False
         self.gamemode.game_over = False
         self.game_screen = gs.GameScreen(self.screen, self.settings, self.gamemode, self.controller)
