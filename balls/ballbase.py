@@ -55,7 +55,7 @@ class BallBase:
 
         if self.bRandomDirection:
             self.degree = random.randint(0, 360)
-            value_speed = random.randint(5, 20)
+            value_speed = random.randint(10, 20)
             self.velocity_x = value_speed
             self.velocity_y = value_speed
 

@@ -42,9 +42,6 @@ class GameScreen:
                                 text_color=(0, 0, 0), background_color=self.settings.BACKGROUND_COLOR,
                                 pos_x=self.settings.WINDOW_WIDTH/2 + 25, pos_y=self.settings.WINDOW_HEIGHT/2)
 
-        # Background sound
-        pygame.mixer.music.load('wav/backgroundmusic.wav')
-        pygame.mixer.music.play(-1, 0.0)
 
     def run(self):
         """ Run all the function needed to update and display the screen """

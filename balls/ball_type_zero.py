@@ -18,10 +18,10 @@ class BallTypeZero(BallBase):
 
     def update(self):
         # Calculate the amount of y position moved
-        self.rect.centery += math.sin(self.radian) * self.velocity.y
+        self.rect.centery += math.sin(self.radian) * self.velocity_y
 
         # Calculate the amount of x position moved
-        self.rect.centerx += math.cos(self.radian) * self.velocity.x
+        self.rect.centerx += math.cos(self.radian) * self.velocity_x
 
         # Check if the ball hit the edges of the screen
         self.check_boundaries()
@@ -33,13 +33,13 @@ class BallTypeZero(BallBase):
         pygame.draw.ellipse(self.screen, self.color, self.rect, 0)
 
     def check_boundaries(self):
-        if self.rect.left < 0:
-            self.velocity_x *= -1
+        if self.rect.top < 0:
+            self.velocity_y *= -1
 
-        if self.rect.right > self.settings.WINDOW_WIDTH:
-            self.velocity_x *= -1
+        if self.rect.bottom > self.settings.WINDOW_HEIGHT:
+            self.velocity_y *= -1
 
-        if self.rect.top - self.ball_height < 0 and self.rect.bottom + self.ball_width > self.settings.WINDOW_HEIGHT:
+        if self.rect.left - self.ball_width < 0 or self.rect.right + self.ball_width > self.settings.WINDOW_WIDTH:
             self.gamemode.remainingBalls -= 1
             self.balls.remove(self)
             self.gamemode.check_if_over()

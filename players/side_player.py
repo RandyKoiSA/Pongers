@@ -13,10 +13,10 @@ class SidePlayer(PlayerBase):
         self.rect = self.image.get_rect()
         if not rightside:
             self.rect.x = self.settings.WINDOW_WIDTH / 4
-            self.rect.y = 10
+            self.rect.y = 30
         else:
             self.rect.x = self.settings.WINDOW_WIDTH / 4
-            self.rect.y = self.settings.WINDOW_HEIGHT - 10
+            self.rect.y = self.settings.WINDOW_HEIGHT - 40
 
     def update(self):
         """ Update the player based on controller input """

@@ -13,11 +13,11 @@ class EasyEnemySidePaddle(EnemyBase):
         # Top enemy bar
         if self.topSide:
             self.rect.x = 3 * self.settings.WINDOW_WIDTH / 4
-            self.rect.y = 10
+            self.rect.y = 30
         # Bottom Enemy bar
         else:
             self.rect.x = 3 * self.settings.WINDOW_WIDTH / 4
-            self.rect.y = self.settings.WINDOW_HEIGHT - 20
+            self.rect.y = self.settings.WINDOW_HEIGHT - 40
 
     def update(self, balls):
         """ Update the enemy movements """
